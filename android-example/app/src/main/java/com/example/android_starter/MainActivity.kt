@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity() {
         // curl https://api.github.com
         baseManager.request("https://api.github.com") {
             when (it) {
-                is Result.Success -> Log.d(TAG, "response: ${it.response}")
+                is Result.Success -> {
+                    Log.d(TAG, "response: ${it.response}")
+                }
                 is Result.Failure -> Log.d(TAG, "error: ${it.error.message}")
             }
         }

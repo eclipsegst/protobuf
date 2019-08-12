@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package com.example.proto;
+option java_multiple_files = true;
+option swift_prefix="";
+
+message GithubApi {
+    string current_user_url = 1 [json_name="current_user_url"];
+    string current_user_authorizations_html_url = 2 [json_name="current_user_authorizations_html_url"];
+    string authorizations_url = 3 [json_name="authorizations_url"];
+    string code_search_url = 4 [json_name="code_search_url"];
+    string commit_search_url = 5 [json_name="commit_search_url"];
+
+    string emails_url = 6 [json_name="emails_url"];
+    string emojis_url = 7 [json_name="emojis_url"];
+    string events_url = 8 [json_name="events_url"];
+    string feeds_url = 9 [json_name="feeds_url"];
+    string followers_url = 10 [json_name="followers_url"];
+
+    string following_url = 11 [json_name="following_url"];
+    string gists_url = 12 [json_name="gists_url"];
+    string hub_url = 13 [json_name="hub_url"];
+    string issue_search_url = 14 [json_name="issue_search_url"];
+    string issues_url = 15 [json_name="issues_url"];
+
+    string keys_url = 16 [json_name="keys_url"];
+    string notifications_url = 17 [json_name="notifications_url"];
+    string organization_repositories_url = 18 [json_name="organization_repositories_url"];
+    string organization_url = 19 [json_name="organization_url"];
+    string public_gists_url = 20 [json_name="public_gists_url"];
+
+    string rate_limit_url = 21 [json_name="rate_limit_url"];
+    string repository_url = 22 [json_name="repository_url"];
+    string repository_search_url = 23 [json_name="repository_search_url"];
+    string current_user_repositories_url = 24 [json_name="current_user_repositories_url"];
+    string starred_url = 25 [json_name="starred_url"];
+
+    string starred_gists_url = 26 [json_name="starred_gists_url"];
+    string team_url = 27 [json_name="team_url"];
+    string user_url = 28 [json_name="user_url"];
+    string user_organizations_url = 29 [json_name="user_organizations_url"];
+    string user_repositories_url = 30 [json_name="user_repositories_url"];
+
+    string user_search_url = 31 [json_name="user_search_url"];
+}

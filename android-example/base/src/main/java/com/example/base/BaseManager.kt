@@ -5,7 +5,14 @@ import android.os.Handler
 import android.os.HandlerThread
 import okhttp3.OkHttpClient
 import android.os.Looper
+import android.util.Log
+import com.example.proto.GithubApi
+import com.google.gson.JsonParser
+import com.google.protobuf.Internal
+import com.google.protobuf.util.JsonFormat
 import okhttp3.Request
+import org.json.JSONException
+import org.json.JSONObject
 import java.lang.Exception
 
 
@@ -32,7 +39,7 @@ class BaseManager(applicationContext: Context) {
         handlerThread.quitSafely()
     }
 
-    fun request(url: String, callback: CompletionWithResult<String, Exception>) {
+    fun request(url: String, callback: CompletionWithResult<GithubApi, Exception>) {
         backgroundHandler.post{
             val request = Request.Builder()
                 .url(url)
@@ -40,9 +47,12 @@ class BaseManager(applicationContext: Context) {
 
             client.newCall(request).execute().use {
                     response ->
-                val result = response.body?.string() ?: "empty response"
+
+                val githubApi = GithubApi.newBuilder()
+                JsonFormat.parser().merge(response.body?.string(), githubApi)
+
                 mainHandler.post{
-                    callback.invoke(Result.Success(result))
+                    callback.invoke(Result.Success(githubApi.build()))
                 }
             }
         }
